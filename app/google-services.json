@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "43072499904",
+    "project_id": "ihelp-4b7f5",
+    "storage_bucket": "ihelp-4b7f5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:43072499904:android:3d463e92f08095581bbd25",
+        "android_client_info": {
+          "package_name": "com.example.ihelp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "43072499904-pf5vcpg4a7drsvkokvtb8s179b9d1mmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlgAsE2Yk5VKFf99BKg7BI1i8TRmn2LiI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "43072499904-pf5vcpg4a7drsvkokvtb8s179b9d1mmf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
