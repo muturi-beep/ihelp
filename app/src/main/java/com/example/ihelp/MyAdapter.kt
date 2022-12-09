@@ -6,16 +6,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
+class MyAdapter(private val userList: ArrayList<User>) :
+    RecyclerView.Adapter<MyAdapter.MyViewHolder>() {
 
-
-
+    public class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
+        val firstname : TextView = itemView.findViewById(R.id.tvfirstname)
+        val lastname : TextView = itemView.findViewById(R.id.tvlastname)
+        val email : TextView = itemView.findViewById(R.id.tvemail)
+        val amount : TextView = itemView.findViewById(R.id.tvamount)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.MyViewHolder {
 
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item,
-        parent,false)
-
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.list_item, parent,false)
         return MyViewHolder(itemView)
 
     }
@@ -36,14 +40,5 @@ class MyAdapter(private val userList: ArrayList<User>) : RecyclerView.Adapter<My
 
     }
 
-    public class MyViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
 
-        val firstname : TextView = itemView.findViewById(R.id.tvfirstname)
-        val lastname : TextView = itemView.findViewById(R.id.tvlastname)
-        val email : TextView = itemView.findViewById(R.id.tvemail)
-        val amount : TextView = itemView.findViewById(R.id.tvamount)
-
-
-
-    }
 }

@@ -3,6 +3,7 @@ package com.example.ihelp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.DocumentChange
@@ -28,46 +29,22 @@ class RecycleViewActivity : AppCompatActivity() {
 
         userArrayList = arrayListOf()
 
-        myAdapter = MyAdapter(userArrayList)
-
-        recyclerView.adapter = myAdapter
-
-        EventChangeListener()
-
-    }
-
-    private fun EventChangeListener() {
-
         db = FirebaseFirestore.getInstance()
-        db.collection("Users").
-                addSnapshotListener(object : EventListener<QuerySnapshot>{
-                    override fun onEvent(
-                        value: QuerySnapshot?,
-                        error: FirebaseFirestoreException?
-                    ) {
 
-                        if (error != null){
-
-                            Log.e("Firestore Error",error.message.toString())
-                            return
-
+        db.collection("donations").get()
+            .addOnSuccessListener {
+                if (!it.isEmpty) {
+                    for (data in it.documents) {
+                        val user: User? = data.toObject(User::class.java)
+                        if (user != null) {
+                            userArrayList.add(user)
                         }
-
-                        for (dc : DocumentChange in value?.documentChanges!!){
-
-                            if (dc.type == DocumentChange.Type.ADDED){
-
-                                userArrayList.add(dc.document.toObject(User::class.java))
-
-                            }
-                        }
-
-                        myAdapter.notifyDataSetChanged()
-
                     }
-
-
-                })
-
+                    recyclerView.adapter = MyAdapter(userArrayList)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, it.toString(), Toast.LENGTH_SHORT).show()
+            }
     }
 }
